@@ -68,7 +68,7 @@ namespace TrekBycicleApplication
             return surveyFamilyBikes;
         }
 
-        public List<Models.FamilyBikes> DetermineTopTwentyMostPopularBikeCombinations(List<Models.FamilyBikes> families)
+        public List<Models.FamilyBikes> DetermineMostPopularBikeCombinations(List<Models.FamilyBikes> families)
         {
             distinctListOfFamilies = new List<Models.FamilyBikes>();            
 

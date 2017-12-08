@@ -16,7 +16,7 @@ namespace TrekBycicleApplication
 
             var output = workingClass.ParseJSONStringToArray(jsonStringObject);
 
-            var mostPopular = workingClass.DetermineTopTwentyMostPopularBikeCombinations(output);
+            var mostPopular = workingClass.DetermineMostPopularBikeCombinations(output);
 
             Console.WriteLine("The 20 most most popular combinations of bikes from the survey are: ");
             Console.Write(Environment.NewLine);
