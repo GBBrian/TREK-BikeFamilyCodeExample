@@ -38,7 +38,7 @@ namespace TrekBycicleApplication
             return trekJsonString;
         }
 
-        public List<Models.FamilyBikes> ParseJSONStringToArray(string input)
+        public List<Models.FamilyBikes> JSONStringToFamilyBikes(string input)
         {
             var trekBikesJArray = JsonConvert.DeserializeObject<JArray>(input);
 
@@ -74,9 +74,19 @@ namespace TrekBycicleApplication
 
             foreach (var item in families)
             {
-                if (DoesTheFamilyExist(item) == false)
+                // If the distinct list has no items, add the oneFamily item being passed into the method.
+                if (distinctListOfFamilies.Count() == 0)
                 {
-                    distinctListOfFamilies.Add(item);
+                    Models.FamilyBikes newby = new Models.FamilyBikes { bikes = new List<string>(), PopularityCount = 0 };
+                    newby.bikes.AddRange(item.bikes);
+                    distinctListOfFamilies.Add(newby);
+                }
+                else
+                {
+                    if (DoesTheFamilyExist(item) == false)
+                    {
+                        distinctListOfFamilies.Add(item);
+                    }
                 }
             }
 
@@ -112,15 +122,7 @@ namespace TrekBycicleApplication
 
         public bool DoesTheFamilyExist(Models.FamilyBikes oneFamily)
         {
-            var exists = false;
-
-            // If the distinct list has no items, add the oneFamily item being passed into the method.
-            if (distinctListOfFamilies.Count() == 0)
-            {
-                Models.FamilyBikes newby = new Models.FamilyBikes { bikes = new List<string>(), PopularityCount = 0 };
-                newby.bikes.AddRange(oneFamily.bikes);
-                distinctListOfFamilies.Add(newby);                
-            }
+            var exists = false;            
 
             foreach (var distinctFamily in distinctListOfFamilies)
             {

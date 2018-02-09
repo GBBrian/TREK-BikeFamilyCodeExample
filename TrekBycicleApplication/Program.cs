@@ -14,7 +14,7 @@ namespace TrekBycicleApplication
 
             var jsonStringObject = workingClass.GetJSONStringData();
 
-            var output = workingClass.ParseJSONStringToArray(jsonStringObject);
+            var output = workingClass.JSONStringToFamilyBikes(jsonStringObject);
 
             var mostPopular = workingClass.DetermineMostPopularBikeCombinations(output);
 
